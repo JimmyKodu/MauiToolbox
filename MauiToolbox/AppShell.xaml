@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MauiToolbox.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiToolbox"
+    xmlns:pages="clr-namespace:MauiToolbox.Pages"
+    xmlns:sys="clr-namespace:System;assembly=netstandard"
+    Title="MauiToolbox">
+    
+    <Shell.FlyoutHeader>
+        <Label Margin="{OnPlatform Default='0,0,0,12',
+                                   iOS='0',
+                                   MacCatalyst='0'}"
+               Padding="{OnPlatform Default='4,0',
+                                    iOS='4, 100, 4, 0',
+                                    MacCatalyst='4, 100, 4, 0'}"
+               FontSize="24"
+               HorizontalTextAlignment="Start"
+               Text="工具箱功能"/>
+
+    </Shell.FlyoutHeader>
+    
+    <FlyoutItem Title="欢迎"
+            Route="WelcomePage"
+            Icon="{OnPlatform Default='dotnet_bot.png', MacCatalyst={x:Null}}">
+        <ShellContent ContentTemplate="{DataTemplate pages:WelcomePage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="仪表板"
+                Icon="{OnPlatform Default='dotnet_bot.png', MacCatalyst={x:Null}}">
+        <Tab Title="全部"
+             Icon="dotnet_bot.png">
+            <ShellContent
+                Route="BreakPage"
+                Title="定时休息"
+                Icon="dotnet_bot.png"
+                ContentTemplate="{DataTemplate local:MainPage}" />
+            <ShellContent
+                Title="下载视频"
+                Icon="dotnet_bot.png"
+                ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+        <Tab Title="最近使用"
+             Icon="dotnet_bot.png">
+            <ShellContent
+                Title="剪贴板历史记录"
+                Icon="dotnet_bot.png"
+                ContentTemplate="{DataTemplate local:MainPage}" />
+            <ShellContent
+                Title="查找重复项"
+                Icon="dotnet_bot.png"
+                ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+    </FlyoutItem>
+
+    <FlyoutItem Title="库"
+                Icon="{OnPlatform Default='dotnet_bot.png', MacCatalyst={x:Null}}">
+        <Tab Title="全新"
+             Icon="dotnet_bot.png">
+            <ShellContent
+                Title="窗口管理器"
+                Icon="dotnet_bot.png"
+                ContentTemplate="{DataTemplate local:MainPage}" />
+            <ShellContent
+                Title="单位转换器"
+                Icon="dotnet_bot.png"
+                ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+        <Tab Title="全部"
+             Icon="dotnet_bot.png">
+            <ShellContent
+                Title="捕获窗口"
+                Icon="dotnet_bot.png"
+                ContentTemplate="{DataTemplate local:MainPage}" />
+            <ShellContent
+                Title="不进入休眠模式"
+                Icon="dotnet_bot.png"
+                ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+    </FlyoutItem>
+
+    <Shell.FlyoutFooter>
+        <Label Padding="4"
+               HorizontalOptions="End"
+               Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:yyyy-MM-dd HH:mm:ss.fffffff zzz}'}" />
+    </Shell.FlyoutFooter>
+</Shell>
